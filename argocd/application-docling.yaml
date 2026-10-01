@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: docling
-  namespace: argocd
+  namespace: openshift-gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,9 +12,10 @@ spec:
     targetRevision: main
     path: apps/docling
   destination:
-    # Verify this exact value under Settings > Clusters in the Argo CD UI; it must
-    # match the server URL used when the RKE2 cluster was registered, not just the hostname.
-    server: https://cdclv002.ad.curia.europa.eu:6443
+    # Use the exact cluster "name" shown under Settings > Clusters in the Argo CD UI.
+    # If your cluster is only listed by server URL there, replace this with:
+    #   server: https://<the-exact-url-shown-in-the-UI>
+    name: rancher-poc-rke2
     namespace: docling
   syncPolicy:
     automated:
