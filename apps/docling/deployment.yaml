@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: docling-serve
+  name: docling-serve-test-poc
   namespace: docling-test-poc
   labels:
     app.kubernetes.io/name: docling-serve
