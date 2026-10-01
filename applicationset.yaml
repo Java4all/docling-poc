@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: docling-poc
+  namespace: openshift-gitops
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            argocd.argoproj.io/secret-type: cluster
+        values:
+          revision: master
+  template:
+    metadata:
+      name: '{{.name}}-test-applicationset'
+    spec:
+      project: rancher-poc
+      source:
+        repoURL: https://github.com/argoproj/argocd-example-apps/
+        targetRevision: '{{.values.revision}}'
+        path: guestbook
+      destination:
+        server: '{{.server}}'
+        namespace: ns-docling-poc-test
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
