@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: docling
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: rancher-poc
+  source:
+    repoURL: https://github.com/Java4all/docling-poc
+    targetRevision: main
+    path: apps/docling
+  destination:
+    # Verify this exact value under Settings > Clusters in the Argo CD UI; it must
+    # match the server URL used when the RKE2 cluster was registered, not just the hostname.
+    server: https://cdclv002.ad.curia.europa.eu:6443
+    namespace: docling
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docling-config
+  namespace: docling
+data:
+  UVICORN_HOST: "0.0.0.0"
+  UVICORN_PORT: "5001"
+  UVICORN_WORKERS: "1"
+  DOCLING_DEVICE: "cuda:0"
+  RAPIDOCR_ORT_PROVIDERS: "['CUDAExecutionProvider']"
+  DOCLING_SERVE_LOG_LEVEL: "INFO"
+  DOCLING_SERVE_LOG_FORMAT: "json"
+  #DOCLING_SERVE_ARTIFACTS_PATH: "/opt/app-root/src/artifacts"
+  DOCLING_SERVE_SCRATCH_PATH: "/tmp/docling"
+  DOCLING_SERVE_LOAD_MODELS_AT_BOOT: "false"
+  DOCLING_SERVE_OPTIONS_CACHE_SIZE: "2"
+  DOCLING_SERVE_MAX_SYNC_WAIT: "120"
+  DOCLING_SERVE_ENG_LOC_NUM_WORKERS: "4"
+  OMP_NUM_THREADS: "4"
+  MKL_NUM_THREADS: "4"

@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: rancher-poc
+  namespace: argocd
+spec:
+  description: RKE2/Rancher PoC applications (docling and future apps/* entries in this repo)
+  sourceRepos:
+    - https://github.com/Java4all/docling-poc
+  destinations:
+    - server: https://cdclv002.ad.curia.europa.eu:6443
+      namespace: "*"
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"

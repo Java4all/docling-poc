@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: docling-poc-apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - git:
+        repoURL: https://github.com/Java4all/docling-poc
+        revision: main
+        directories:
+          # Matches apps/docling today; any future apps/<name>/ folder in this repo
+          # is picked up automatically on the next appset reconcile, with no new YAML to write.
+          - path: apps/*
+  template:
+    metadata:
+      name: "{{.path.basename}}"
+    spec:
+      project: rancher-poc
+      source:
+        repoURL: https://github.com/Java4all/docling-poc
+        targetRevision: main
+        path: "{{.path.path}}"
+      destination:
+        # Same caveat as the standalone Application: verify against Settings > Clusters.
+        server: https://cdclv002.ad.curia.europa.eu:6443
+        namespace: "{{.path.basename}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
