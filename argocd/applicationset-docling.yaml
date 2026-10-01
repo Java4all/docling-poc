@@ -24,7 +24,7 @@ spec:
         path: apps/docling
       destination:
         server: '{{.server}}'
-        namespace: ns-docling-poc-test
+        namespace: docling-test-poc
       syncPolicy:
         automated:
           prune: true

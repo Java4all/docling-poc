@@ -3,6 +3,11 @@ kind: Service
 metadata:
   name: docling-serve-test-poc
   namespace: docling-test-poc
+  annotations:
+    traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: "DOCLING_UI_STICKY"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.samesite: "lax"
 spec:
   type: ClusterIP
   selector:

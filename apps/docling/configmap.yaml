@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: docling-config
-  namespace: docling-poc-test
+  namespace: docling-test-poc
 data:
   UVICORN_HOST: "0.0.0.0"
   UVICORN_PORT: "5001"

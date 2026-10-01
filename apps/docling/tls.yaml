@@ -6,7 +6,7 @@ kind: Secret
 metadata:
   creationTimestamp: "2026-09-25T07:26:20Z"
   name: wildcard-docling-poc
-  namespace: docling
+  namespace: docling-test-poc
   resourceVersion: "5161417"
   uid: 2cd48f16-d43e-4aa6-b03f-8e124b403820
 type: kubernetes.io/tls

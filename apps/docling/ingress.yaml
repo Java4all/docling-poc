@@ -1,13 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
-    traefik.ingress.kubernetes.io/service.sticky.cookie.name: "DOCLING_UI_STICKY"
-    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "lax"
-  name: docling
-  namespace: docling
+  name: docling-test-poc
+  namespace: docling-test-poc
 spec:
   ingressClassName: traefik
   rules:
@@ -16,12 +11,12 @@ spec:
       paths:
       - backend:
           service:
-            name: docling-serve
+            name: docling-serve-test-poc
             port:
               number: 5001
         path: /
         pathType: Prefix
   tls:
   - hosts:
-    - docling.apps.rancher-poc.ad.curia.europa.eu
+    - docling-poc.apps.rancher-poc.ad.curia.europa.eu
     secretName: wildcard-docling-poc

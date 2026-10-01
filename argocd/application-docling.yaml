@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: docling
+  name: docling-test-poc
   namespace: openshift-gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -15,8 +15,8 @@ spec:
     # Use the exact cluster "name" shown under Settings > Clusters in the Argo CD UI.
     # If your cluster is only listed by server URL there, replace this with:
     #   server: https://<the-exact-url-shown-in-the-UI>
-    name: rancher-poc-rke2
-    namespace: docling
+    name: rancher-poc
+    namespace: docling-test-poc
   syncPolicy:
     automated:
       prune: true

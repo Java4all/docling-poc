@@ -4,7 +4,7 @@ metadata:
   name: docling-serve-test-poc
   namespace: docling-test-poc
   labels:
-    app.kubernetes.io/name: docling-serve
+    app.kubernetes.io/name: docling-serve-test-poc
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -12,11 +12,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/name: docling-serve
+      app.kubernetes.io/name: docling-serve-test-poc
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: docling-serve
+        app.kubernetes.io/name: docling-serve-test-poc
     spec:
       runtimeClassName: nvidia
       nodeSelector:
@@ -47,7 +47,7 @@ spec:
         - name: artifacts
           mountPath: /artifacts
       containers:
-        - name: docling-serve
+        - name: docling-serve-test-poc
           image: ghcr.io/java4all/ai/docling-serve-ocr:1.0.1
           imagePullPolicy: IfNotPresent
           envFrom:
