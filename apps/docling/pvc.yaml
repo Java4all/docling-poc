@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: docling-artifacts
-  namespace: docling
+  namespace: docling-test-poc
 spec:
   accessModes:
     - ReadWriteOnce
