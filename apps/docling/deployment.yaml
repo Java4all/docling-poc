@@ -103,19 +103,5 @@ spec:
         - name: scratch
           emptyDir:
             sizeLimit: 20Gi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: docling-serve
-  namespace: docling-test-poc
-spec:
-  type: ClusterIP
-  selector:
-    app.kubernetes.io/name: docling-serve
-  ports:
-    - name: http
-      port: 5001
-      targetPort: http
-      protocol: TCP
+
                          
