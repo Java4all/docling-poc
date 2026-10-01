@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: docling-test-poc
-  labels:
-    app.kubernetes.io/part-of: docling-test-poc
