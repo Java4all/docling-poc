@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: docling.apps.rancher-poc.ad.curia.europa.eu
+  - host: docling-poc.apps.rancher-poc.ad.curia.europa.eu
     http:
       paths:
       - backend:
